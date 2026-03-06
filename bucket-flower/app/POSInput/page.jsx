@@ -2,10 +2,10 @@
 import React, { useState, useMemo } from "react";
 
 const DUMMY_PRODUCTS = [
-    { id: 1, name: "Kurma Ajwa 500g", price: 150000, category: "Makanan" },
-    { id: 2, name: "Madu Yaman 250ml", price: 200000, category: "Minuman" },
-    { id: 3, name: "Habbatusauda", price: 85000, category: "Herbal" },
-    { id: 4, name: "Sari Kurma", price: 45000, category: "Herbal" },
+    { id: 1, name: "Buket Mawar Merah (Medium)", price: 150000, category: "Bunga Segar" },
+    { id: 2, name: "Buket Tulip & Lily (Premium)", price: 250000, category: "Bunga Segar" },
+    { id: 3, name: "Buket Bunga Kering (Rustic)", price: 85000, category: "Bunga Kering" },
+    { id: 4, name: "Snack & Money Bouquet", price: 350000, category: "Custom" },
 ];
 
 export default function POSInput() {
