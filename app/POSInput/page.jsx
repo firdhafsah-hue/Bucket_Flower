@@ -11,12 +11,12 @@ const THEME = {
 };
 
 const DUMMY_PRODUCTS = [
-    { id: 1, name: "Buket Mawar Marun", price: 150000, category: "Bunga Segar", theme: "rose" },
-    { id: 2, name: "Buket Matahari", price: 75000, category: "Bunga Segar", theme: "amber" },
-    { id: 3, name: "Buket Tulip Lembayung", price: 250000, category: "Premium", theme: "fuchsia" },
-    { id: 4, name: "Buket Daisy Biru", price: 120000, category: "Bunga Segar", theme: "sky" },
-    { id: 5, name: "Lily Pink Bloom", price: 180000, category: "Premium", theme: "rose" },
-    { id: 6, name: "Pita Daun Mint Hias", price: 90000, category: "Pelengkap", theme: "emerald" },
+    { id: 1, name: "Buket Mawar Marun", price: 150000, category: "Bunga Segar", theme: "rose", imageUrl: "https://images.unsplash.com/photo-1563241527-3004b7be6ffd?q=80&w=300&auto=format&fit=crop" },
+    { id: 2, name: "Buket Matahari", price: 75000, category: "Bunga Segar", theme: "amber", imageUrl: "https://images.unsplash.com/photo-1597826365998-2b8109bf4346?q=80&w=300&auto=format&fit=crop" },
+    { id: 3, name: "Buket Tulip Lembayung", price: 250000, category: "Premium", theme: "fuchsia", imageUrl: "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=300&auto=format&fit=crop" },
+    { id: 4, name: "Buket Daisy Biru", price: 120000, category: "Bunga Segar", theme: "sky", imageUrl: "https://images.unsplash.com/photo-1560717845-968823efbee1?q=80&w=300&auto=format&fit=crop" },
+    { id: 5, name: "Lily Pink Bloom", price: 180000, category: "Premium", theme: "rose", imageUrl: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=300&auto=format&fit=crop" },
+    { id: 6, name: "Pita Daun Mint Hias", price: 90000, category: "Pelengkap", theme: "emerald", imageUrl: "https://images.unsplash.com/photo-1610438235354-a6ae5528385c?q=80&w=300&auto=format&fit=crop" },
 ];
 
 export default function POSInput() {
@@ -118,8 +118,8 @@ export default function POSInput() {
                                 onClick={() => addToCart(product)}
                                 className={`group relative p-6 rounded-3xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl bg-white/70 backdrop-blur-sm border-2 ${style.shadow} ${style.hover}`}
                             >
-                                <div className={`w-20 h-20 mx-auto rounded-full flex justify-center items-center text-4xl shadow-inner transition-transform duration-500 group-hover:scale-110 mb-5 ${style.light}`}>
-                                    {style.icon}
+                                <div className={`w-24 h-24 mx-auto rounded-full overflow-hidden shadow-md transition-transform duration-500 group-hover:scale-110 mb-5 border-4 ${style.border}`}>
+                                    <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
                                 </div>
                                 <h3 className="font-bold text-gray-800 text-center text-lg leading-tight mb-2">{product.name}</h3>
                                 <p className={`text-center font-extrabold ${style.text} bg-white/60 py-1 px-3 rounded-full inline-block mx-auto w-fit block`}>
@@ -152,7 +152,7 @@ export default function POSInput() {
                                 <div key={item.id} className={`flex justify-between items-center p-4 bg-white rounded-2xl shadow-sm border-l-4 ${style.border} hover:shadow-md transition-shadow`}>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2 mb-1">
-                                            <span>{style.icon}</span>
+                                            <img src={item.imageUrl} alt={item.name} className="w-8 h-8 rounded-full border border-gray-200 object-cover shadow-sm mr-2" />
                                             <h4 className="font-bold text-gray-800 text-sm leading-tight">{item.name}</h4>
                                         </div>
                                         <p className={`text-sm font-semibold ${style.text}`}>{formatRupiah(item.price)}</p>
