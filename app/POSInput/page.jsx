@@ -77,10 +77,15 @@ export default function POSInput() {
     };
 
     return (
-        <div className="flex h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-emerald-50 font-sans overflow-hidden">
+        <div className="flex h-screen bg-gradient-to-br from-pink-100 to-sky-100 font-sans overflow-hidden flex-nowrap relative">
+            {/* Elemen Dekoratif Tambahan (Abstract Shapes) dari Skema CSS barumu */}
+            <div className="absolute -top-[100px] -left-[100px] w-[300px] h-[300px] bg-[#a3e1f7]/50 rounded-full blur-[60px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-[20px] right-[20px] w-[200px] h-[200px] bg-[#ff477e]/40 rounded-full blur-[60px] pointer-events-none z-0"></div>
+
             {/* Kiri: Daftar Produk (Taman) */}
-            <div className="w-2/3 p-8 overflow-y-auto custom-scrollbar">
-                <div className="flex justify-between items-center mb-8 bg-white/40 p-4 rounded-2xl backdrop-blur-md border border-white/60 shadow-sm">
+            <div className="w-2/3 p-8 overflow-y-auto custom-scrollbar relative z-10">
+
+                <div className="flex justify-between items-center mb-8 bg-white/85 p-5 rounded-3xl backdrop-blur-xl border border-white/40 shadow-[0_10px_30px_rgba(255,71,126,0.15)] relative z-10">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow hover:scale-105 transition-transform text-gray-600">
                             🏠
@@ -187,9 +192,9 @@ export default function POSInput() {
 
                     <button
                         onClick={handleCheckout}
-                        className="w-full bg-gradient-to-r from-pink-500 to-amber-500 text-white py-4 rounded-2xl font-extrabold text-lg hover:to-amber-400 transition-colors shadow-lg shadow-pink-200 hover:shadow-xl transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-tr from-rose-500 to-pink-400 text-white py-4 rounded-[15px] font-bold text-[1rem] hover:opacity-90 transition-opacity shadow-[0_5px_15px_rgba(255,71,126,0.3)] transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
                     >
-                        <span>Cetak Struk Pembayaran</span> 🖨️
+                        <span>Cetak Struk Pembayaran</span> <span className="text-xl">🖨️</span>
                     </button>
                 </div>
             </div>
