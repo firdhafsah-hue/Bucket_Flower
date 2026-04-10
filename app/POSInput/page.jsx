@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link"; // For back to menu
 
 const THEME = {
@@ -22,6 +22,20 @@ const DUMMY_PRODUCTS = [
 export default function POSInput() {
     const [cart, setCart] = useState([]);
     const [includeSadaqah, setIncludeSadaqah] = useState(false);
+
+    // --- State untuk Jam Digital ---
+    const [time, setTime] = useState(new Date());
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        const timer = setInterval(() => setTime(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const formattedTime = mounted ? time.toLocaleTimeString('id-ID', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }) : "00:00:00";
+    const formattedDate = mounted ? time.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : "Memuat Hari...";
+    // -------------------------------
 
     const addToCart = (product) => {
         const existing = cart.find(item => item.id === product.id);
@@ -75,10 +89,19 @@ export default function POSInput() {
                             Taman Bunga Kasir
                         </h1>
                     </div>
-                    {/* Sharia Compliance Badge */}
-                    <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 px-4 py-1.5 rounded-full text-sm font-bold border border-emerald-200 shadow-md transform hover:scale-105 transition-transform cursor-default">
-                        <span className="animate-pulse">✨</span> Sharia Certified
-                    </span>
+
+                    <div className="flex items-center gap-6">
+                        {/* Widget Jam Digital & Tanggal Murni dari Kode HTML Kamu */}
+                        <div className="text-right border-r border-white/50 pr-6">
+                            <div className="text-2xl font-black text-pink-500 leading-tight mb-1">{formattedTime}</div>
+                            <div className="text-[13px] font-semibold text-gray-500">{formattedDate}</div>
+                        </div>
+
+                        {/* Sharia Compliance Badge */}
+                        <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 px-4 py-1.5 rounded-full text-sm font-bold border border-emerald-200 shadow-md transform hover:scale-105 transition-transform cursor-default">
+                            <span className="animate-pulse">✨</span> Sharia Certified
+                        </span>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
